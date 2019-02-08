@@ -1,9 +1,9 @@
 import discord
 from discord.ext import commands
 
-TOKEN = 'NTM2OTY3NzEyMTExNTkxNDMz.Dzykmw.J1nBswy-HqDTBu9yafoOUdAo_MU'
+TOKEN = 'Insert Token Here'
 
-description = '''SquidBot in Python'''
+description = '''Al1ce bot in Python'''
 bot = commands.Bot(command_prefix='.', description=description)
 
 @bot.event
