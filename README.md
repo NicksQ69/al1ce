@@ -1,2 +1,2 @@
-# al1ce
-Bot discord (build on python) - School project
+# Al1ce
+Discord bot (built on python) - School project
