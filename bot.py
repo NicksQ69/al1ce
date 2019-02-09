@@ -22,7 +22,11 @@ async def hello():
 @bot.command()
 async def github():
     """Give github's link"""
-    await bot.say("https://github.com/NicksQ69/al1ce")
+    embed=discord.Embed(title="GitHub", url="https://github.com/NicksQ69/al1ce", description="GitHub by NicksQ69, co-written with Squidoss", color=0x0080ff)
+    embed.set_author(name="AL1CE",, icon_url="https://c.wallhere.com/photos/62/1e/shelter_video_Rin_Shelter_sky_space_planet-11546.jpg!d")
+    embed.set_thumbnail(url="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1200px-Octicons-mark-github.svg.png")
+    await bot.say(embed=embed)
+    #await bot.say("https://github.com/NicksQ69/al1ce")
 
 
 bot.run(TOKEN)
