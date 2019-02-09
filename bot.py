@@ -18,6 +18,11 @@ async def on_ready():
 async def hello():
     """Says world"""
     await bot.say("world")
+    
+@bot.command()
+async def github():
+    """Give github's link"""
+    await bot.say("https://github.com/NicksQ69/al1ce")
 
 
 bot.run(TOKEN)
