@@ -1,21 +1,26 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import discord, subprocess
+import discord, subprocess, os
 from discord.ext import commands
 
-TOKEN = 'Insert Token Here'
+file=open('/home/al1ce/AL1CE_Bot/token.txt', 'r')
+TOKEN = file.read().rstrip("\n")
 
 description = '''AL1CE_Bot in Python'''
 bot = commands.Bot(command_prefix='$', description=description)
 
 @bot.event
 async def on_ready():
+    print('------')
     print('Logged in as')
     print(bot.user.name)
-    print(bot.user.id)
+    print("ID : " + bot.user.id)
+    print("Token : " + TOKEN)
     print('------')
+    await bot.change_presence(game=discord.Game(name='listening you', type=0))
 
+#Commands
 
 @bot.command()
 async def hello():
@@ -53,4 +58,3 @@ async def reboot(ctx):
         await bot.say("Accès non autorisé")
 
 bot.run(TOKEN)
-
