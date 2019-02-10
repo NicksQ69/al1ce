@@ -22,7 +22,7 @@ async def hello():
 @bot.command()
 async def github():
     """Give github's link"""
-    gitEmbed=discord.Embed(title="GitHub", url="https://github.com/NicksQ69/al1ce", description="GitHub by NicksQ69, co-written with Squidoss", color=0x0080ff)
+    gitEmbed=discord.Embed(title="GitHub", url="https://github.com/NicksQ69/al1ce", description="GitHub by NicksQ69, co-written with Squidoss and Elmunt", color=0x0080ff)
     gitEmbed.set_author(name="AL1CE", icon_url="https://i.imgur.com/TwxY5sr.png")
     gitEmbed.set_thumbnail(url="https://i.imgur.com/IHRXykr.png")
     await bot.say(embed=gitEmbed)
