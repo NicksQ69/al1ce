@@ -1,10 +1,13 @@
-import discord
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import discord, subprocess
 from discord.ext import commands
 
 TOKEN = 'Insert Token Here'
 
 description = '''AL1CE_Bot in Python'''
-bot = commands.Bot(command_prefix='.', description=description)
+bot = commands.Bot(command_prefix='$', description=description)
 
 @bot.event
 async def on_ready():
@@ -18,7 +21,7 @@ async def on_ready():
 async def hello():
     """Says world"""
     await bot.say("world")
-    
+
 @bot.command()
 async def github():
     """Give github's link"""
@@ -37,4 +40,17 @@ async def website():
     await bot.say(embed=gitEmbed)
     #await bot.say("http://al1ce.fr")
 
+@bot.command(pass_context=True)
+async def reboot(ctx):
+    """Ask to reboot now"""
+    if ctx.message.author.id == '192361476844027904':
+        await bot.say("Redémarrage en cours")
+        await bot.say("{} , mon maître adoré.".format(ctx.message.author.mention))
+        print("Restart in progress")
+        subprocess.call("./start.sh", shell=True)
+        sys.exit()
+    else:
+        await bot.say("Accès non autorisé")
+
 bot.run(TOKEN)
+
