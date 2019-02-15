@@ -4,7 +4,7 @@
 import discord, subprocess, os
 from discord.ext import commands
 
-file=open('/home/al1ce/AL1CE_Bot/token.txt', 'r')
+file=open('/home/al1ce/Bot/token.txt', 'r')
 TOKEN = file.read().rstrip("\n")
 
 description = '''AL1CE_Bot in Python'''
@@ -18,7 +18,7 @@ async def on_ready():
     print("ID : " + bot.user.id)
     print("Token : " + TOKEN)
     print('------')
-    await bot.change_presence(game=discord.Game(name='listening you', type=0))
+    await bot.change_presence(game=discord.Game(name='you, master ... <3', type=2))
 
 #Commands
 
