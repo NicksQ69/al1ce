@@ -18,7 +18,7 @@ async def on_ready():
     print("ID : " + bot.user.id)
     print("Token : " + TOKEN)
     print('------')
-    await bot.change_presence(game=discord.Game(name='you, master ... <3', type=2))
+    await bot.change_presence(game=discord.Game(name='you, master <3', type=2))
 
 #Commands
 
