@@ -8,7 +8,7 @@ file=open('/home/al1ce/Bot/token.txt', 'r')
 TOKEN = file.read().rstrip("\n")
 
 description = '''AL1CE_Bot in Python'''
-bot = commands.Bot(command_prefix='$', description=description)
+bot = commands.Bot(command_prefix='¤', description=description)
 
 @bot.event
 async def on_ready():
@@ -18,7 +18,7 @@ async def on_ready():
     print("ID : " + bot.user.id)
     print("Token : " + TOKEN)
     print('------')
-    await bot.change_presence(game=discord.Game(name='you, master <3', type=2))
+    await bot.change_presence(game=discord.Game(name='you, master ... <3', type=2))
 
 #Commands
 
@@ -49,12 +49,12 @@ async def website():
 async def reboot(ctx):
     """Ask to reboot now"""
     if ctx.message.author.id == '192361476844027904':
-        await bot.say("Redémarrage en cours")
-        await bot.say("{} , mon maître adoré.".format(ctx.message.author.mention))
+        await bot.say("Restart in progress")
+        await bot.say("{} , my beloved master ... <3.".format(ctx.message.author.mention))
         print("Restart in progress")
         subprocess.call("./start.sh", shell=True)
         sys.exit()
     else:
-        await bot.say("Accès non autorisé")
+        await bot.say("Unauthorized access")
 
 bot.run(TOKEN)
