@@ -8,7 +8,7 @@ file=open('/home/al1ce/Bot/token.txt', 'r')
 TOKEN = file.read().rstrip("\n")
 
 description = '''AL1CE_Bot in Python'''
-bot = commands.Bot(command_prefix='¤', description=description)
+bot = commands.Bot(command_prefix='.', description=description)
 
 @bot.event
 async def on_ready():
