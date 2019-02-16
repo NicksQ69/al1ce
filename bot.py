@@ -25,8 +25,10 @@ async def on_ready():
 @bot.command()
 async def hello():
     """Al1ce answers you!"""
+    gitEmbed=discord.Embed(title="Al1ce", description="Hello ! My name is Al1ce, and i was created to make your life easier! =D", color=0x0080ff)
     gitEmbed.set_author(name="AL1CE", icon_url="https://i.imgur.com/TwxY5sr.png")
-    await bot.say("Hello ! My name is Al1ce, and i was created to make your life easier!")
+    gitEmbed.set_thumbnail(url="https://i.imgur.com/TwxY5sr.png")
+    await bot.say(embed=gitEmbed)
 
 @bot.command()
 async def github():
