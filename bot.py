@@ -24,8 +24,9 @@ async def on_ready():
 
 @bot.command()
 async def hello():
-    """Says world"""
-    await bot.say("world")
+    """Al1ce answers you!"""
+    gitEmbed.set_author(name="AL1CE", icon_url="https://i.imgur.com/TwxY5sr.png")
+    await bot.say("Hello ! My name is Al1ce, and i was created to make your life easier!")
 
 @bot.command()
 async def github():
