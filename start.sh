@@ -1,4 +1,4 @@
 #!/bin/bash
-cd ~/AL1CE_Bot/
+cd /home/al1ce/Bot/AL1CE
 git pull
 python3 bot.py
