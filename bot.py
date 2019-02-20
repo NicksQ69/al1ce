@@ -9,7 +9,6 @@ TOKEN = file.read().rstrip("\n")        #Module discord, lecture du «TOKEN» co
 
 description = '''AL1CE_Bot in Python'''     #Description du bot.
 bot = commands.Bot(command_prefix='.', description=description)     #Définit le préfixe «.» pour ordonner le bot.
-client.remove_command('help')
 
 @bot.event      #Démarrage du bot.
 async def on_ready():       #Définit la fonction de démarrage «on_ready».
@@ -22,15 +21,6 @@ async def on_ready():       #Définit la fonction de démarrage «on_ready».
     await bot.change_presence(game=discord.Game(name='you, master ... <3', type=2))     #Définit le statut du bot pour les utilisateurs «listening to».
 
 #Commands
-
-@bot.command(pass_context=True)
-async def help(ctx):
-    """Displays the commands"""
-    author = ctx.message.author
-    Embed = discord.Embed(color=0x0080ff)
-    Embed.set_author(name='Help')
-    Embed.add_field(name='.ping', inline=False)
-    await client.send_message(author, Embed=Embed)
 
 @bot.command()      #Définit une commande pour le bot.
 async def hello():      #Définit la fonction «hello».
