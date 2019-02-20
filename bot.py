@@ -60,11 +60,9 @@ async def reboot(ctx):      #Définit la fonction «reboot».
     else:       #Sinon, ...
         await bot.say("Unauthorized access")        #Afficher que l'accès n'est pas autorisé.
         
-@bot.command()      #Définit une commande pour le bot.
+@bot.command(pass_context=True)      #Définit une commande pour le bot.
 async def ping():       #Définit la fonction «ping».
     """Get the latency"""       #Description de la commande «ping».
     await bot.say("Pong!")      #Lecture de la commande par le bot.
     
-
-
 bot.run(TOKEN)      #Exécution du bot à partir de la variable «TOKEN».
