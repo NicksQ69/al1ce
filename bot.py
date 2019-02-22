@@ -9,6 +9,7 @@ TOKEN = file.read().rstrip("\n")        #Module discord, lecture du «TOKEN» co
 
 description = '''AL1CE_Bot in Python'''     #Description du bot.
 bot = commands.Bot(command_prefix='.', description=description)     #Définit le préfixe «.» pour ordonner le bot.
+bot.remove_command('help')
 
 @bot.event      #Démarrage du bot.
 async def on_ready():       #Définit la fonction de démarrage «on_ready».
@@ -20,6 +21,7 @@ async def on_ready():       #Définit la fonction de démarrage «on_ready».
     print('------')
     await bot.change_presence(game=discord.Game(name='you, master ... <3', type=2))     #Définit le statut du bot pour les utilisateurs «listening to».
 
+    
 #Commands
 
 @bot.command()      #Définit une commande pour le bot.
@@ -55,14 +57,14 @@ async def reboot(ctx):      #Définit la fonction «reboot».
         await bot.say("Restart in progress")        #Alors, le programme de redémarrage s'éffectue.
         await bot.say("{} , my beloved master ... <3.".format(ctx.message.author.mention))
         print("Restart in progress")
-        subprocess.call("./start.sh", shell=True)       #Exécute le programme "shell" : «./start.sh»
+        subprocess.call("./start.sh", shell=True)       #Exécute le programme "shell" : «start.sh»
         sys.exit()      #Fermeture du programme «bot.py».
     else:       #Sinon, ...
         await bot.say("Unauthorized access")        #Afficher que l'accès n'est pas autorisé.
         
 @bot.command()      #Définit une commande pour le bot.
-async def ping():       #Définit la fonction «ping».
-    """Get the latency"""       #Description de la commande «ping».
+async def ping():   #Définit la fonction «ping».
+    """Replies pong !"""        #Description de la commande «ping».
     await bot.say("Pong!")      #Lecture de la commande par le bot.
     
 bot.run(TOKEN)      #Exécution du bot à partir de la variable «TOKEN».
