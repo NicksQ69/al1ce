@@ -1,7 +1,7 @@
 #!/usr/bin/env python       #Indication d'un fichier python.
 # -*- coding: utf-8 -*-     #Lecture du fichier sous format UTF-8 (inclut les accents).
 
-import discord, subprocess, os      #Importer des fonctions des autres modules.
+import discord, subprocess, os, youtube_dl      #Importer des fonctions des autres modules.
 from discord.ext import commands    #Importer des commandes depuis le fichier «discord.ext».
 
 file=open('/home/al1ce/Bot/token.txt', 'r')     #Définit la variable «file» sur le contenu du fichier «token.txt».
@@ -21,6 +21,11 @@ async def on_ready():       #Définit la fonction de démarrage «on_ready».
     print('------')
     await bot.change_presence(game=discord.Game(name='you, master ... <3', type=2))     #Définit le statut du bot pour les utilisateurs «listening to».
 
+players = {}
+    
+class Voice:
+  def __init__(self, client):
+    self.client = client
     
 #Commands
 
@@ -66,5 +71,51 @@ async def reboot(ctx):      #Définit la fonction «reboot».
 async def ping():   #Définit la fonction «ping».
     """Replies pong !"""        #Description de la commande «ping».
     await bot.say("Pong!")      #Lecture de la commande par le bot.
+
+#Voice commands
+  
+@commands.command(pass_context=True)
+async def join(self, ctx):
+    channel = ctx.message.author.voice.voice_channel
+    await self.client.join_voice_channel(channel)
+    await self.client.say(":microphone: Joined '{}' voice channel :microphone:".format(channel.name))
+
+@commands.command(pass_context=True)
+async def leave(self, ctx):
+    channel = ctx.message.author.voice.voice_channel
+    server = ctx.message.server
+    voice_client = self.client.voice_client_in(server)
+    await voice_client.disconnect()
+    await self.client.say(":microphone: Left '{}' voice channel :microphone:".format(channel.name))
+    
+@commands.command(pass_context=True)
+async def play(self, ctx, url):
+    server = ctx.message.server
+    voice_client = self.client.voice_client_in(server)
+    player = await voice_client.create_ytdl_player(url)
+    players[server.id] = player
+    player.start()
+    await self.client.say(":musical_note: Now playing : {} :musical_note:".format(url))
+    
+@commands.command(pass_context=True)
+async def pause(self, ctx):
+    id = ctx.message.server.id
+    players[id].pause()
+    await self.client.say(":pause_button: Music paused :pause_button:")
+    
+@commands.command(pass_context=True)
+async def resume(self, ctx):
+    id = ctx.message.server.id
+    players[id].resume()
+    await self.client.say(":play_pause: Music resumed :play_pause:")
+    
+@commands.command(pass_context=True)
+async def stop(self, ctx):
+    id = ctx.message.server.id
+    players[id].stop()
+    await self.client.say(":stop_button: Music stopped :stop_button:")
+    
+def setup(client):
+  client.add_cog(Voice(client))
     
 bot.run(TOKEN)      #Exécution du bot à partir de la variable «TOKEN».
