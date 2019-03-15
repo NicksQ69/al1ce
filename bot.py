@@ -1,7 +1,7 @@
 #!/usr/bin/env python       #Indication d'un fichier python.
 # -*- coding: utf-8 -*-     #Lecture du fichier sous format UTF-8 (inclut les accents).
 
-import discord, subprocess, os, youtube_dl      #Importer des fonctions des autres modules.
+import discord, subprocess, os, sys, youtube_dl      #Importer des fonctions des autres modules.
 from discord.ext import commands    #Importer des commandes depuis le fichier «discord.ext».
 
 file=open('/home/al1ce/Bot/token.txt', 'r')     #Définit la variable «file» sur le contenu du fichier «token.txt».
