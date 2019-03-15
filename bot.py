@@ -67,7 +67,8 @@ async def ping():   #Définit la fonction «ping».
     
 @bot.command(pass_context=True)
 async def join(ctx):
+    """Ask to join the voice channel"""
     channel = ctx.message.author.voice.voice_channel
-    await client.join_voice_channel(channel)
+    await bot.join_voice_channel(channel)
     
 bot.run(TOKEN)      #Exécution du bot à partir de la variable «TOKEN».
