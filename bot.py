@@ -75,7 +75,7 @@ async def join(ctx):
 async def leave(ctx):
     """Ask to leave the voice channel"""
     server = ctx.message.server
-    voice_bot = bot.voice_bot_in(server)
+    voice_client = bot.voice_client_in(server)
     await voice_bot.disconnect()
     
 bot.run(TOKEN)      #Exécution du bot à partir de la variable «TOKEN».
