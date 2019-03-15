@@ -70,7 +70,7 @@ async def reboot(ctx):      #Définit la fonction «reboot».
 @bot.command()      #Définit une commande pour le bot.
 async def ping():   #Définit la fonction «ping».
     """Replies pong !"""        #Description de la commande «ping».
-    await message.author.send("Pong !")      #Lecture de la commande par le bot.
+    message.author.send("Pong !")      #Lecture de la commande par le bot.
 
 #Voice commands
   
