@@ -20,6 +20,11 @@ async def on_ready():       #Définit la fonction de démarrage «on_ready».
     print('------')
     await bot.change_presence(game=discord.Game(name='you, master ... <3', type=2))     #Définit le statut du bot pour les utilisateurs «listening to».
     
+@client.command(pass_context=True)
+async def join(ctx):
+    channel = ctx.message.author.voice.voice_channel
+    await client.join_voice_channel(channel)
+
 #Commands
 
 @bot.command()      #Définit une commande pour le bot.
