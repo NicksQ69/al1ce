@@ -71,4 +71,11 @@ async def join(ctx):
     channel = ctx.message.author.voice.voice_channel
     await bot.join_voice_channel(channel)
     
+@bot.command(pass_context=True)
+async def leave(ctx):
+    """Ask to leave the voice channel"""
+    server = ctx.message.server
+    voice_bot = bot.voice_client_in(server)
+    await voice_bot.disconnect()
+    
 bot.run(TOKEN)      #Exécution du bot à partir de la variable «TOKEN».
