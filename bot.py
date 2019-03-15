@@ -9,7 +9,6 @@ TOKEN = file.read().rstrip("\n")        #Module discord, lecture du «TOKEN» co
 
 description = '''AL1CE_Bot in Python'''     #Description du bot.
 bot = commands.Bot(command_prefix='.', description=description)     #Définit le préfixe «.» pour ordonner le bot.
-bot.remove_command('help')
 
 @bot.event      #Démarrage du bot.
 async def on_ready():       #Définit la fonction de démarrage «on_ready».
