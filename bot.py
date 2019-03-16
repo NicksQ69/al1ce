@@ -83,14 +83,6 @@ async def join(ctx):
         await client.join_voice_channel(channel)
         print("Bot joined the voice channel")
         
-@client.command(pass_context = True)
-async def check(ctx):
-    server = ctx.message.server
-    if client.is_voice_connected(server):
-        print("Yes")
-    else:
-        print("No")
-    
 @client.command(pass_context=True)
 async def leave(ctx):
     """Ask to leave the voice channel"""
