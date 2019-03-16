@@ -81,7 +81,6 @@ async def join(ctx):
     else:
         channel = ctx.message.author.voice.voice_channel
         await client.join_voice_channel(channel)
-        print("Bot joined the voice channel")
         
 @client.command(pass_context=True)
 async def leave(ctx):
