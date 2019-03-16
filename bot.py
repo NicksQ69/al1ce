@@ -96,7 +96,7 @@ async def leave(ctx):
     """Ask to leave the voice channel"""
     for x in client.voice_clients:
         if(x.server == ctx.message.server):
-            return await x.discconect()
+            return await x.disconnect()
     return await client.say("I am not connected to any voice channel on this server!")
     
 client.run(TOKEN)      #Exécution du bot à partir de la variable «TOKEN».
