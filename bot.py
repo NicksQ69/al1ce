@@ -96,7 +96,7 @@ async def leave(ctx):
 async def play(ctx, url):
     server = ctx.message.server
     voice_client = client.voice_client_in(server)
-    player = await voice_client.create_ytdl_player(url)
+    player = await voice_client.create_ytdl_player(player.url, ytdl_options=self.opts, after=self.toggle_next)
     players[server.id] = player
     player.start()
     
