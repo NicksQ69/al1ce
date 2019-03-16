@@ -1,8 +1,12 @@
 #!/usr/bin/env python       #Indication d'un fichier python.
 # -*- coding: utf-8 -*-     #Lecture du fichier sous format UTF-8 (inclut les accents).
 
-import discord, subprocess, os, sys, youtube_dl      #Importer des fonctions des autres modules.
-from discord.ext import commands    #Importer des commandes depuis le fichier «discord.ext».
+import discord, subprocess, os, sys, youtube_dl, nacl, asyncio      #Importer des modules.
+from discord.ext.commands import Bot        #Importer des fonctions depuis des modules divers.
+from discord.ext import commands    
+from discord import Game
+from discord import opus
+from ctypes.util import find_library
 
 file=open('/home/al1ce/Bot/token.txt', 'r')     #Définit la variable «file» sur le contenu du fichier «token.txt».
 TOKEN = file.read().rstrip("\n")        #Module discord, lecture du «TOKEN» contenu dans la variable «file».
@@ -65,17 +69,34 @@ async def ping():   #Définit la fonction «ping».
     """Replies pong !"""        #Description de la commande «ping».
     await client.say("Pong !")      #Lecture de la commande par le bot.
     
+#Commands Vocal
+    
 @client.command(pass_context=True)
 async def join(ctx):
     """Ask to join the voice channel"""
-    channel = ctx.message.author.voice.voice_channel
-    await client.join_voice_channel(channel)
+    opus_path = find_library('opus')
+    discord.opus.load_opus(opus_path)
+    if not opus.is_loaded():
+        print("Opus was not loaded")
+    else:
+        channel = ctx.message.author.voice.voice_channel
+        await client.join_voice_channel(channel)
+        print("Bot joined the voice channel")
+        
+@client.command(pass_context = True)
+async def check(ctx):
+    server = ctx.message.server
+    if client.is_voice_connected(server):
+        print("Yes")
+    else:
+        print("No")
     
 @client.command(pass_context=True)
 async def leave(ctx):
     """Ask to leave the voice channel"""
-    server = ctx.message.server
-    voice_client = client.voice_client_in(server)
-    await voice_client.disconnect()
+    for x in client.voice_clients:
+        if(x.server == ctx.message.server):
+            return await x.discconect()
+    return await client.say("I am not connected to any voice channel on this server!")
     
 client.run(TOKEN)      #Exécution du bot à partir de la variable «TOKEN».
