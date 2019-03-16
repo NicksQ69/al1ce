@@ -96,13 +96,8 @@ async def leave(ctx):
 async def play(ctx, url):
     server = ctx.message.server
     voice_client = client.voice_client_in(server)
-    opus_path = find_library('opus')
-    discord.opus.load_opus(opus_path)
-    if not opus.is_loaded():
-        print("Opus was not loaded")
-    else:
-        player = await voice_client.create_ytdl_player(url)
-        players[server.id] = player
-        player.start()
+    player = await voice_client.create_ytdl_player(url)
+    players[server.id] = player
+    player.start()
     
 client.run(TOKEN)      #Exécution du bot à partir de la variable «TOKEN».
