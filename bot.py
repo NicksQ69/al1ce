@@ -95,6 +95,7 @@ async def leave(ctx):
 @client.command(pass_context=True)
 async def play(ctx, url):
     server = ctx.message.server
+    voice_client = client.voice_client_in(server)
     opus_path = find_library('opus')
     discord.opus.load_opus(opus_path)
     if not opus.is_loaded():
