@@ -14,6 +14,8 @@ TOKEN = file.read().rstrip("\n")        #Module discord, lecture du «TOKEN» co
 description = '''AL1CE_Bot in Python'''     #Description du bot.
 client = commands.Bot(command_prefix='.', description=description)     #Définit le préfixe «.» pour ordonner le bot.
 
+players = {}
+
 @client.event      #Démarrage du bot.
 async def on_ready():       #Définit la fonction de démarrage «on_ready».
     print('------')     #Affiche des marges sur le terminal pour rendre lisible le contenu (esthétique).
@@ -89,5 +91,13 @@ async def leave(ctx):
         if(x.server == ctx.message.server):
             return await x.disconnect()
     return await client.say("I am not connected to any voice channel on this server!")
+
+@client.command(pass_context=True)
+async def play(ctx, url):
+    server = ctx.message.server
+    voice_client = client.voice_client_in(server)
+    player = await voice_client.create_ytdl_player(url)
+    players[server.id] = player
+    player.start()
     
 client.run(TOKEN)      #Exécution du bot à partir de la variable «TOKEN».
