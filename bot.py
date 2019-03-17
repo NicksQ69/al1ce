@@ -93,9 +93,9 @@ async def leave(ctx):
     return await client.say("I am not connected to any voice channel on this server!")
 
 @client.command(pass_context=True)
-async def play(self, ctx, url):
+async def play(ctx, url):
     server = ctx.message.server
-    voice_client = self.client.voice_client_in(server)
+    voice_client = client.voice_client_in(server)
     player = await voice_client.create_ytdl_player(url)
     players[server.id] = player
     player.start()
