@@ -15,6 +15,7 @@ description = '''AL1CE_Bot in Python'''     #Description du bot.
 client = commands.Bot(command_prefix='>>', description=description)     #Définit le préfixe «>>» pour ordonner le bot.
 
 players = {}
+owners = ['192361476844027904', '357566595029008387']
 
 @client.event      #Démarrage du bot.
 async def on_ready():       #Définit la fonction de démarrage «on_ready».
@@ -57,7 +58,7 @@ async def website():        #Définit la fonction «website».
 @client.command(pass_context=True)     #Définit une commande pour le bot.
 async def reboot(ctx):      #Définit la fonction «reboot».
     """Ask to reboot now"""     #Description de la commande «reboot».
-    if ctx.message.author.id == '192361476844027904', '357566595029008387':       #Si l'identification correspond à l'identification donnée, ...
+    if ctx.message.author.id in owners:       #Si l'identification correspond à l'identification donnée, ...
         await client.say("Restart in progress")        #Alors, le programme de redémarrage s'éffectue.
         await client.say("{} , my beloved master ... <3.".format(ctx.message.author.mention))
         print("Restart in progress")
