@@ -8,7 +8,7 @@ from discord import Game
 from discord import opus
 from ctypes.util import find_library
 
-file=open('/home/al1ce/Bot/token.txt', 'r')     #Définit la variable «file» sur le contenu du fichier «token.txt».
+file=open('/home/al1ce/Discord/token.txt', 'r')     #Définit la variable «file» sur le contenu du fichier «token.txt».
 TOKEN = file.read().rstrip("\n")        #Module discord, lecture du «TOKEN» contenu dans la variable «file».
 
 description = '''AL1CE_Bot in Python'''     #Description du bot.
