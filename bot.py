@@ -12,7 +12,7 @@ file=open('/home/al1ce/Bot/token.txt', 'r')     #Définit la variable «file» s
 TOKEN = file.read().rstrip("\n")        #Module discord, lecture du «TOKEN» contenu dans la variable «file».
 
 description = '''AL1CE_Bot in Python'''     #Description du bot.
-client = commands.Bot(command_prefix='.', description=description)     #Définit le préfixe «.» pour ordonner le bot.
+client = commands.Bot(command_prefix='>>', description=description)     #Définit le préfixe «>>» pour ordonner le bot.
 
 players = {}
 
@@ -103,16 +103,19 @@ async def play(ctx, url):
     
 @client.command(pass_context=True)
 async def pause(ctx):
+    """Ask to pause the music"""
     id = ctx.message.server.id
     players[id].pause()
     
 @client.command(pass_context=True)
 async def stop(ctx):
+    """Ask to stop the music"""
     id = ctx.message.server.id
     players[id].stop()
     
 @client.command(pass_context=True)
 async def resume(ctx):
+    """Ask to resume the music"""
     id = ctx.message.server.id
     players[id].resume()
     
