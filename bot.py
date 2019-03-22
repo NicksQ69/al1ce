@@ -73,12 +73,12 @@ async def ping():   #Définit la fonction «ping».
     """Replies pong !"""        #Description de la commande «ping».
     await client.say("Pong !")      #Lecture de la commande par le bot.
     
-@client.command(pass_context=True)
-async def help(ctx):
-    author = ctx.message.author
-    embed = discord.Embed(colour = discord.Colour.blue())
-    embed.set_author(name='Help')
-    embed.add_field(name='>>hello', value='Al1ce answers you!', inline= False)
+@client.command(pass_context=True)      #Définit une commande pour le bot.
+async def help(ctx):        #Définit la fonction <<help>>.
+    """Replies all command"""       #Description de la commande <<help>>.
+    embed = discord.Embed(colour = discord.Colour.blue())       #Encadrement avec une couleur, pour rendre plus esthétique la commande.
+    embed.set_author(name='Help')       #Ajout du titre de l'encadré <<'Help'>>.
+    embed.add_field(name='>>hello', value='Al1ce answers you!', inline= False)      #Ajout des commandes avec leur descriptions.
     embed.add_field(name='>>github', value='Give github link', inline= False)
     embed.add_field(name='>>website', value='Give official website link', inline= False)
     embed.add_field(name='>>reboot', value='Ask to reboot now', inline= False)
@@ -89,54 +89,54 @@ async def help(ctx):
     embed.add_field(name='>>pause', value='Ask to pause the music', inline= False)
     embed.add_field(name='>>stop', value='Ask to stop the music', inline= False)
     embed.add_field(name='>>resume', value='Ask to resume the music', inline= False)
-    await client.say(embed=embed)
+    await client.say(embed=embed)       #Lecture de la commande par le bot.
     
 #Commands Vocal
     
-@client.command(pass_context=True)
-async def join(ctx):
-    """Ask to join the voice channel"""
-    opus_path = find_library('opus')
-    discord.opus.load_opus(opus_path)
-    if not opus.is_loaded():
-        print("Opus was not loaded")
-    else:
-        channel = ctx.message.author.voice.voice_channel
-        await client.join_voice_channel(channel)
+@client.command(pass_context=True)      #Définit une commande pour le bot.
+async def join(ctx):        #Définit la fonction <<join>>.
+    """Ask to join the voice channel"""     #Description de la commande <<join>>.
+    opus_path = find_library('opus')        #Définit 'opus_path' à une librairie de commande dans le module 'opus'.
+    discord.opus.load_opus(opus_path)       #Exécution du module 'opus'.
+    if not opus.is_loaded():        #Si le module 'opus' n'est pas exécuté.
+        print("Opus was not loaded")        #Afficher que 'Opus n'a pas été chargé'.
+    else:       #Sinon, ...
+        channel = ctx.message.author.voice.voice_channel        #Définit 'channel' la connexion du bot à un salon vocal.
+        await client.join_voice_channel(channel)        #Lecture de la commande par le bot.
         
-@client.command(pass_context=True)
-async def leave(ctx):
-    """Ask to leave the voice channel"""
-    for x in client.voice_clients:
-        if(x.server == ctx.message.server):
-            return await x.disconnect()
-    return await client.say("I am not connected to any voice channel on this server!")
+@client.command(pass_context=True)      #Définit une commande pour le bot.
+async def leave(ctx):       #Définit la fonction <<leave>>.
+    """Ask to leave the voice channel"""        #Description de la commande <<leave>>.
+    for x in client.voice_clients:      #Pour 'x' dans le salon vocal : ...
+        if(x.server == ctx.message.server):     #Si un utilisateur utilise la commande, ...
+            return await x.disconnect()     #Alors le bot se déconnecte du salon vocal.
+    return await client.say("I am not connected to any voice channel on this server!")      #Sinon, le bot annonce qu'il n'est pas connecté à un salon vocal.
 
-@client.command(pass_context=True)
-async def play(ctx, url):
-    """Ask to play the music"""
-    server = ctx.message.server
-    voice_client = client.voice_client_in(server)
-    player = await voice_client.create_ytdl_player(url)
-    players[server.id] = player
-    player.start()
+@client.command(pass_context=True)      #Définit une commande pour le bot.
+async def play(ctx, url):       #Définit la fonction <<play>>.
+    """Ask to play the music"""     #Description de la commande <<play>>.
+    server = ctx.message.server     #Définit server pour les messages adressés au bot.
+    voice_client = client.voice_client_in(server)       #Définit 'voice_client' pour la connexion du bot au salon vocal.
+    player = await voice_client.create_ytdl_player(url)     #Réception et exécution du module 'youtube_dl'.
+    players[server.id] = player     #L'ensemble des utilisateurs ont accès à l'utilisation du module 'youtube_dl'.
+    player.start()      #Exécute la musique sélectionné et téléchargé via le module 'youtube_dl'.
     
-@client.command(pass_context=True)
-async def pause(ctx):
-    """Ask to pause the music"""
-    id = ctx.message.server.id
-    players[id].pause()
+@client.command(pass_context=True)      #Définit une commande pour le bot.
+async def pause(ctx):       #Définit la fonction <<pause>>.
+    """Ask to pause the music"""        #Description de la commande <<pause>>.
+    id = ctx.message.server.id      #Définit 'id' les identifications disponibles de ceux qui utilisent la commande.
+    players[id].pause()     #Exécute la commande, et met en pause la musique.
     
-@client.command(pass_context=True)
-async def stop(ctx):
-    """Ask to stop the music"""
-    id = ctx.message.server.id
-    players[id].stop()
+@client.command(pass_context=True)      #Définit une commande pour le bot.
+async def stop(ctx):        #Définit la fonction <<stop>>.
+    """Ask to stop the music"""     #Description de la commande <<stop>>.
+    id = ctx.message.server.id      #Définit 'id' les identifications disponibles de ceux qui utilisent la commande.
+    players[id].stop()      #Exécute la commande, et arrête la lecture de la musique.
     
-@client.command(pass_context=True)
-async def resume(ctx):
-    """Ask to resume the music"""
-    id = ctx.message.server.id
-    players[id].resume()
+@client.command(pass_context=True)      #Définit une commande pour le bot.
+async def resume(ctx):      #Définit la fonction <<resume>>.
+    """Ask to resume the music"""       #Description de la commande <<resume>>.
+    id = ctx.message.server.id      #Définit 'id' les identifications disponibles de ceux qui utilisent la commande.
+    players[id].resume()        #Exécute la commande, et reprend la lecture de la musique.
     
 client.run(TOKEN)      #Exécution du bot à partir de la variable «TOKEN».
