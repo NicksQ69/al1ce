@@ -13,6 +13,7 @@ TOKEN = file.read().rstrip("\n")        #Module discord, lecture du «TOKEN» co
 
 description = '''AL1CE_Bot in Python'''     #Description du bot.
 client = commands.Bot(command_prefix='>>', description=description)     #Définit le préfixe «>>» pour ordonner le bot.
+client.remove_command('help')
 
 players = {}
 owners = ['192361476844027904', '357566595029008387']
@@ -71,6 +72,24 @@ async def reboot(ctx):      #Définit la fonction «reboot».
 async def ping():   #Définit la fonction «ping».
     """Replies pong !"""        #Description de la commande «ping».
     await client.say("Pong !")      #Lecture de la commande par le bot.
+    
+@client.command(pass_context=True)
+async def help(ctx):
+    author = ctx.message.author
+    embed = discord.Embed(colour = discord.Colour.blue())
+    embed.set_author(name='Help')
+    embed.add_field(name='>>hello', value='Al1ce answers you!', inline= False)
+    embed.add_field(name='>>github', value='Give github link', inline= False)
+    embed.add_field(name='>>website', value='Give official website link', inline= False)
+    embed.add_field(name='>>reboot', value='Ask to reboot now', inline= False)
+    embed.add_field(name='>>ping', value='Replies pong!', inline= False)
+    embed.add_field(name='>>join', value='Ask to join the voice channel', inline= False)
+    embed.add_field(name='>>leave', value='Ask to leave the voice channel', inline= False)
+    embed.add_field(name='>>play', value='Ask to play the music', inline= False)
+    embed.add_field(name='>>pause', value='Ask to pause the music', inline= False)
+    embed.add_field(name='>>stop', value='Ask to stop the music', inline= False)
+    embed.add_field(name='>>resume', value='Ask to resume the music', inline= False)
+    await client.say(embed=embed)
     
 #Commands Vocal
     
