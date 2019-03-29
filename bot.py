@@ -41,7 +41,7 @@ async def hello():      #Définit la fonction «hello».
 @client.command()
 async def invite():
     """Ask to join your server!"""
-    gitEmbed=discord.Embed(title="Do you want me ?", url="https://discordapp.com/api/oauth2/authorize?client_id=543498787562192906&permissions=3594304&scope=bot", description="Ask to join your server!", color=0x0080ff)
+    gitEmbed=discord.Embed(title="Do you want me ?", url="https://discordapp.com/api/oauth2/authorize?client_id=543498787562192906&permissions=3594304&scope=bot", description="Ask to join your server !", color=0x0080ff)
     gitEmbed.set_author(name="AL1CE", icon_url="https://i.imgur.com/TwxY5sr.png")
     gitEmbed.set_thumbnail(url="https://i.imgur.com/TwxY5sr.png")
     await client.say(embed=gitEmbed)
@@ -90,6 +90,7 @@ async def help(ctx):        #Définit la fonction <<help>>.
     embed.add_field(name='>>hello', value='Al1ce answers you!', inline= False)      #Ajout des commandes avec leur descriptions.
     embed.add_field(name='>>github', value='Give github link.', inline= False)
     embed.add_field(name='>>website', value='Give official website link.', inline= False)
+    embed.add_field(name='>>invite', value='Ask to join your server !', inline= False)
     embed.add_field(name='>>reboot', value='Ask to reboot now.', inline= False)
     embed.add_field(name='>>ping', value='Replies pong!', inline= False)
     embed.add_field(name='>>join', value='Ask to join the voice channel.', inline= False)
