@@ -33,7 +33,7 @@ async def on_ready():       #Définit la fonction de démarrage «on_ready».
 @client.command()      #Définit une commande pour le bot.
 async def hello():      #Définit la fonction «hello».
     """Al1ce answers you!"""        #Description de la commande «hello».
-    gitEmbed=discord.Embed(title="Who am I?", description="Hi! My name is Al1ce, and i was created to make your life easier! =D", color=0x0080ff)       #Définit le contenu de la fonction «hello».
+    gitEmbed=discord.Embed(title="Who am I?", url="https://discordapp.com/api/oauth2/authorize?client_id=543498787562192906&permissions=3594304&scope=bot", description="Hi! My name is Al1ce, and i was created to make your life easier! =D", color=0x0080ff)       #Définit le contenu de la fonction «hello».
     gitEmbed.set_author(name="AL1CE", icon_url="https://i.imgur.com/TwxY5sr.png")       #Ajout des images pour rendre plus esthétiques la commande.
     gitEmbed.set_thumbnail(url="https://i.imgur.com/TwxY5sr.png")
     await client.say(embed=gitEmbed)       #Lecture de la commande par le bot.
