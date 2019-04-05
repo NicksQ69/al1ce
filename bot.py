@@ -39,9 +39,9 @@ async def hello():      #Définit la fonction «hello».
     gitEmbed.add_field(name='Name :', value='---> AL1CE', inline= True)
     gitEmbed.add_field(name='Programm :', value='---> Python', inline= True)
     gitEmbed.add_field(name='Creators :', value='---> Nicks & Elmunt', inline= True)
-    gitEmbed.add_field(name='Functions :', value='---> Listening, sharing music, and support you !', inline= True)
-    gitEmbed.add_field(name='Type :', value='---> Opensource, go check out our github !', inline= True)
-    gitEmbed.add_field(name='Support :', value='---> You want to support us? Go check out our website !', inline= True)
+    gitEmbed.add_field(name='Functions :', value='---> Listening, sharing music, and support you!', inline= True)
+    gitEmbed.add_field(name='Type :', value='---> Opensource, go check out our github!', inline= True)
+    gitEmbed.add_field(name='Support :', value='---> You want to support us? Go check out our website!', inline= True)
     await client.say(embed=gitEmbed)       #Lecture de la commande par le bot.
 
 @client.command()
