@@ -64,7 +64,7 @@ async def github():     #Définit la fonction «github».
 @client.command()      #Définit une commande pour le bot.
 async def website():        #Définit la fonction «website».
     """Give official website's link"""      #Description de la commande «website».
-    gitEmbed=discord.Embed(title="AL1CE", url="http://al1ce.fr", description="Official website of AL1CE, made by NicksQ69", color=0x0080ff)     #Définit le contenu de la fonction «website».
+    gitEmbed=discord.Embed(title="AL1CE", url="http://al1ce.fr", description="Official website of AL1CE, made by Nicks", color=0x0080ff)     #Définit le contenu de la fonction «website».
     gitEmbed.set_author(name="AL1CE", icon_url="https://i.imgur.com/TwxY5sr.png")       #Ajout des images pour rendre plus esthétiques la commande.
     gitEmbed.set_thumbnail(url="https://i.imgur.com/Tyohpwv.png")
     await client.say(embed=gitEmbed)       #Lecture de la commande par le bot.
