@@ -13,20 +13,20 @@ file=open('/home/al1ce/Discord/token.txt', 'r')     #Définit la variable «file
 TOKEN = file.read().rstrip("\n")        #Module discord, lecture du «TOKEN» contenu dans la variable «file».
 
 description = '''AL1CE_Bot in Python'''     #Description du bot.
-client = commands.Bot(command_prefix='>>', description=description)     #Définit le préfixe «>>» pour ordonner le bot.
-status = ['you, master ... <3', 'type >>help for help!', 'make your life easier ... <3']
-client.remove_command('help')
+client = commands.Bot(command_prefix='>>', description=description)         #Définit le préfixe «>>» pour ordonner le bot.
+status = ['you, master ... <3', 'type >>help for help!', 'make your life easier ... <3']        #Définit la variable "status".
+client.remove_command('help')       #Supprime la commande 'help' par défaut.
 
-players = {}
-owners = ['192361476844027904', '357566595029008387']
+players = {}    #Définit la variable "players" pour l'ensemble.
+owners = ['192361476844027904', '357566595029008387']       #Définit la variable "owners" pour donner accès qu'aux comptes administrateurs.
 
-async def change_status():
-    await client.wait_until_ready()
-    msgs = cycle(status)
-    while not client.is_closed:
-        current_status = next(msgs)
-        await client.change_presence(game=discord.Game(name=current_status, type=2))
-        await asyncio.sleep(5)
+async def change_status():      #Définit la fonction "change_status".
+    await client.wait_until_ready()     #En attente de la mise à jour du status.
+    msgs = cycle(status)        #Définit la variable "msgs" par le cycle des messages prédéfinits dans la variable "status".
+    while not client.is_closed:     #Alors que si le "client.is_closed" n'est pas actif, ...
+        current_status = next(msgs)     #Définit la variable "current_status" par la suite des messages dans la variable "msgs".
+        await client.change_presence(game=discord.Game(name=current_status, type=2))       #Définit le statut du bot pour les utilisateurs «listening to ...» en exécutant la fonction "change_status". 
+        await asyncio.sleep(5)      #En attente de la fin du délai de 5 secondes.
 
 @client.event      #Démarrage du bot.
 async def on_ready():       #Définit la fonction de démarrage «on_ready».
@@ -53,13 +53,14 @@ async def hello():      #Définit la fonction «hello».
     gitEmbed.add_field(name='Support :', value='---> You want to support us? Go check out our website!', inline= True)
     await client.say(embed=gitEmbed)       #Lecture de la commande par le bot.
 
-@client.command()
-async def invite():
-    """Ask to join your server!"""
-    gitEmbed=discord.Embed(title="Do you want me ?", url="https://discordapp.com/api/oauth2/authorize?client_id=543498787562192906&permissions=3594304&scope=bot", description="Ask to join your server !", color=0x0080ff)
-    gitEmbed.set_author(name="AL1CE", icon_url="https://i.imgur.com/TwxY5sr.png")
+@client.command()       #Définit une commande pour le bot.
+async def invite():     #Définit la fonction <<invite>>.
+    """Ask to join your server!"""      #Description de la commande <<invite>>.
+    gitEmbed=discord.Embed(title="Do you want me ?", url="https://discordapp.com/api/oauth2/authorize?client_id=543498787562192906&permissions=3594304&scope=bot", description="Ask to join your server !", color=0x0080ff)     #Définit le contenu de la commande, ainsi que l'insertion du lien d'invitation pour d'autre serveur discord.
+    gitEmbed.set_author(name="AL1CE", icon_url="https://i.imgur.com/TwxY5sr.png")       #Ajout des images pour rendre plus esthétiques la commande.
     gitEmbed.set_thumbnail(url="https://i.imgur.com/TwxY5sr.png")
-    await client.say(embed=gitEmbed)
+    await client.say(embed=gitEmbed)        #Lecture de la commande par le bot.
+    #await client.say("https://discordapp.com/api/oauth2/authorize?client_id=543498787562192906&permissions=3594304&scope=bot")
     
 @client.command()      #Définit une commande pour le bot.
 async def github():     #Définit la fonction «github».
@@ -164,5 +165,5 @@ async def resume(ctx):      #Définit la fonction <<resume>>.
     id = ctx.message.server.id      #Définit 'id' les identifications disponibles de ceux qui utilisent la commande.
     players[id].resume()        #Exécute la commande, et reprend la lecture de la musique.
     
-client.loop.create_task(change_status())
+client.loop.create_task(change_status())        #Création et exécution du cycle "change_status".
 client.run(TOKEN)      #Exécution du bot à partir de la variable «TOKEN».
