@@ -14,7 +14,7 @@ TOKEN = file.read().rstrip("\n")        #Module discord, lecture du «TOKEN» co
 
 description = '''AL1CE_Bot in Python'''     #Description du bot.
 client = commands.Bot(command_prefix='>>', description=description)     #Définit le préfixe «>>» pour ordonner le bot.
-status = ['you, master ... <3', 'type >>help for help', 'make your life easier ... <3']
+status = ['you, master ... <3', 'type >>help for help!', 'make your life easier ... <3']
 client.remove_command('help')
 
 players = {}
