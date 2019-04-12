@@ -164,4 +164,5 @@ async def resume(ctx):      #Définit la fonction <<resume>>.
     id = ctx.message.server.id      #Définit 'id' les identifications disponibles de ceux qui utilisent la commande.
     players[id].resume()        #Exécute la commande, et reprend la lecture de la musique.
     
+client.loop.create_task(change_status())
 client.run(TOKEN)      #Exécution du bot à partir de la variable «TOKEN».
