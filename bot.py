@@ -7,16 +7,26 @@ from discord.ext import commands
 from discord import Game
 from discord import opus
 from ctypes.util import find_library
+from itertools import cycle
 
 file=open('/home/al1ce/Discord/token.txt', 'r')     #Définit la variable «file» sur le contenu du fichier «token.txt».
 TOKEN = file.read().rstrip("\n")        #Module discord, lecture du «TOKEN» contenu dans la variable «file».
 
 description = '''AL1CE_Bot in Python'''     #Description du bot.
 client = commands.Bot(command_prefix='>>', description=description)     #Définit le préfixe «>>» pour ordonner le bot.
+status = ['you, master ... <3', 'type >>help for help', 'enjoy of me <3']
 client.remove_command('help')
 
 players = {}
 owners = ['192361476844027904', '357566595029008387']
+
+async def change_status():
+    await client.wait_until_ready()
+    msgs = cycle(status)
+    while not client.is_closed:
+        current_status = next(msgs)
+        await client.change_presence(game=discord.Game(name=current_status, type=2))
+        await asyncio.sleep(5)
 
 @client.event      #Démarrage du bot.
 async def on_ready():       #Définit la fonction de démarrage «on_ready».
@@ -26,7 +36,6 @@ async def on_ready():       #Définit la fonction de démarrage «on_ready».
     print("ID : " + client.user.id)
     print("Token : " + TOKEN)       #Afficher le token utilisé sur le terminal.
     print('------')
-    await client.change_presence(game=discord.Game(name='you, master ... <3', type=2))     #Définit le statut du bot pour les utilisateurs «listening to».
 
 #Commands
 
