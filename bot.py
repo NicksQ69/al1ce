@@ -113,11 +113,12 @@ async def help(ctx):        #Définit la fonction <<help>>.
     embed = discord.Embed(colour = discord.Colour.blue())       #Encadrement avec une couleur, pour rendre plus esthétique la commande.
     embed.set_author(name='Command Help?')       #Ajout du titre de l'encadré <<'Help'>>.
     embed.add_field(name='>>hello', value='Al1ce answers you!', inline= False)      #Ajout des commandes avec leur descriptions.
-    embed.add_field(name='>>github', value='Give github link.', inline= False)
-    embed.add_field(name='>>website', value='Give official website link.', inline= False)
+    embed.add_field(name='>>github', value="Give github's link.", inline= False)
+    embed.add_field(name='>>website', value="Give official website's link.", inline= False)
     embed.add_field(name='>>invite', value='Ask to join your server !', inline= False)
     embed.add_field(name='>>reboot', value='Ask to reboot now.', inline= False)
     embed.add_field(name='>>ping', value='Replies pong!', inline= False)
+    embed.add_field(name='>>info', value="Give server's info!", inline= False)
     embed.add_field(name='>>join', value='Ask to join the voice channel.', inline= False)
     embed.add_field(name='>>leave', value='Ask to leave the voice channel.', inline= False)
     embed.add_field(name='>>play', value='Ask to play the music.', inline= False)
