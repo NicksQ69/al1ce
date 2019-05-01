@@ -125,6 +125,27 @@ async def help(ctx):        #Définit la fonction <<help>>.
     embed.add_field(name='>>resume', value='Ask to resume the music.', inline= False)
     await client.send_message(author, embed=embed)       #Lecture de la commande par le bot.
     
+@client.command(pass_context=True)
+async def info(ctx):
+    """Give server's infos"""
+    server = ctx.message.author.server
+    server_name = server.name
+    server_id = server.id
+    server_owner = server.owner.name
+    server_owner_id = server.owner.id
+    server_roles = server.roles
+    roles_list = ''
+    for role in server.roles:
+        roles_list += "{} : <{}> \n".format(role.name, role.id)
+    await client.say(
+        "```Markdown\n"
+        "Server name : {}\n"
+        "Server ID : <{}>\n"
+        "Server owner : {} <{}>\n\n"
+        "Server roles : \n {} \n"
+        "```"
+        .format(server_name, server_id, server_owner, server_owner_id, roles_list))
+    
 #Commands Vocal
     
 @client.command(pass_context=True)      #Définit une commande pour le bot.
