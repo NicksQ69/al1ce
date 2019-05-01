@@ -36,6 +36,14 @@ async def on_ready():       #Définit la fonction de démarrage «on_ready».
     print("ID : " + client.user.id)
     print("Token : " + TOKEN)       #Afficher le token utilisé sur le terminal.
     print('------')
+    
+@client.event   #Evènement.
+async def on_member_join(member):   #Définit la fonction <<on_member_join>>.
+    await client.send_message(member, "Welcome to the server and have fun!")    #Lecture et écrit un message lorsqu'un nouveau client rejoint le serveur.
+
+@client.event   #Evènement.
+async def on_member_leave(member):  #Définit la fonction <<on_member_leave>>.
+    await client.send_message(member, "I'm so sad to see you leave, see you next time!")    #Lecture et écrit un message lorsqu'un client quitte le serveur.
 
 #Commands
 
