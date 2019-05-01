@@ -21,6 +21,7 @@ players = {}    #Définit la variable "players" pour l'ensemble.
 owners = ['192361476844027904', '357566595029008387']       #Définit la variable "owners" pour donner accès qu'aux comptes administrateurs.
 
 async def change_status():      #Définit la fonction "change_status".
+    """Change the status of the bot (...)"""
     await client.wait_until_ready()     #En attente de la mise à jour du status.
     msgs = cycle(status)        #Définit la variable "msgs" par le cycle des messages prédéfinits dans la variable "status".
     while not client.is_closed:     #Alors que si le "client.is_closed" n'est pas actif, ...
@@ -108,7 +109,7 @@ async def ping():   #Définit la fonction «ping».
 @client.command(pass_context=True)      #Définit une commande pour le bot.
 async def help(ctx):        #Définit la fonction <<help>>.
     """Replies all command"""       #Description de la commande <<help>>.
-    author = ctx.message.author
+    author = ctx.message.author     #Définit la variable <<author>>.
     embed = discord.Embed(colour = discord.Colour.blue())       #Encadrement avec une couleur, pour rendre plus esthétique la commande.
     embed.set_author(name='Command Help?')       #Ajout du titre de l'encadré <<'Help'>>.
     embed.add_field(name='>>hello', value='Al1ce answers you!', inline= False)      #Ajout des commandes avec leur descriptions.
@@ -125,26 +126,26 @@ async def help(ctx):        #Définit la fonction <<help>>.
     embed.add_field(name='>>resume', value='Ask to resume the music.', inline= False)
     await client.send_message(author, embed=embed)       #Lecture de la commande par le bot.
     
-@client.command(pass_context=True)
-async def info(ctx):
+@client.command(pass_context=True)      #Définit une commande pour le bot.
+async def info(ctx):        #Définit la fonction <<info>>.
     """Give server's infos"""
-    server = ctx.message.author.server
-    server_name = server.name
-    server_id = server.id
-    server_owner = server.owner.name
-    server_owner_id = server.owner.id
-    server_roles = server.roles
-    roles_list = ''
-    for role in server.roles:
-        roles_list += "{} : <{}> \n".format(role.name, role.id)
-    await client.say(
+    server = ctx.message.author.server      #Définit la variable <<server>>.
+    server_name = server.name       #Définit la variable <<server_name>>.
+    server_id = server.id       #Définit la variable <<server_id>>.
+    server_owner = server.owner.name        #Définit la variable <<server_owner>>.
+    server_owner_id = server.owner.id       #Définit la variable <<server_owner_id>>.
+    server_roles = server.roles     #Définit la variable <<server_roles>>.
+    roles_list = ''     #Définit la variable <<roles_list>>.
+    for role in server.roles:       #Pour 'role' dans 'server.roles'.
+        roles_list += "{} : <{}> \n".format(role.name, role.id)     #Ajout des rôles en revenant à la ligne.
+    await client.say(       #Lecture de la commande par le bot.
         "```Markdown\n"
         "Server name : {}\n"
         "Server ID : <{}>\n"
         "Server owner : {} <{}>\n\n"
         "Server roles : \n {}"
         "```"
-        .format(server_name, server_id, server_owner, server_owner_id, roles_list))
+        .format(server_name, server_id, server_owner, server_owner_id, roles_list))     #Format définit.
     
 #Commands Vocal
     
